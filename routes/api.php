@@ -21,9 +21,9 @@ use App\Http\Controllers\Api\NoteController;
 */
 
 // 打刻
-Route::get('stamp', [StampController::class, 'index']);
-Route::post('stamp', [StampController::class, 'store']);
-Route::put('stamp/{id}', [StampController::class, 'update']);
+Route::get('stamps', [StampController::class, 'index']);
+Route::post('stamps', [StampController::class, 'store']);
+Route::put('stamps/{id}', [StampController::class, 'update']);
 // 所属校
 Route::get('schools', [SchoolController::class, 'index']);
 // 備考

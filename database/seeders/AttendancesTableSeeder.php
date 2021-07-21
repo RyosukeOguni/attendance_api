@@ -16,18 +16,19 @@ class AttendancesTableSeeder extends Seeder
    */
   public function run()
   {
-    //前月のCarbonインスタンスを作成
-    $last_month = Carbon::now()->startOfMonth()->subMonth(1);
-    //前月の日数を取得
-    $last_month_days = $last_month->daysInMonth;
-    //前月のCarbonインスタンスを作成
+    //今月初日のCarbonインスタンスを作成
+    $this_month = Carbon::now()->startOfMonth();
+    //今月の日数を取得
+    $this_month_days = $this_month->daysInMonth;
+    //今月のCarbonインスタンスを作成
     $users = new User;
     //日数分のダミーデータ全ユーザー分を作成
-    for ($i = 0; $i < $last_month_days; $i++) {
+    for ($i = 0; $i < $this_month_days; $i++) {
       for ($j = 1; $j <= $users->count(); $j++) {
-        Attendance::factory()->create(['user_id' => $j, 'insert_date' => $last_month->format('Y-m-d')]);
+        Attendance::factory()->create(['user_id' => $j, 'insert_date' => $this_month->format('Y-m-d')]);
       }
-      $last_month->addDays(1);
+      // 1日繰り上げ
+      $this_month->addDays(1);
     }
   }
 }
