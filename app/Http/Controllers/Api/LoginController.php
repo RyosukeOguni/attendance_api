@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
   public function login(Request $request)
   {
     $credentials = $request->validate([
-      'account' => 'required',
+      'email' => 'required',
       'password' => 'required'
     ]);
 
@@ -20,9 +19,7 @@ class LoginController extends Controller
       return response()->json(['message' => 'Login successful'], 200);
     }
 
-    throw ValidationException::withMessages([
-      'auth' => ['認証が間違っています'],
-    ]);
+    return response()->json(['message' => 'User not found'], 422);
   }
 
   public function logout()
