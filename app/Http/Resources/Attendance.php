@@ -20,10 +20,10 @@ class Attendance extends JsonResource
         'attribute' => [
           'id' => $this->id,
           'user_id' => $this->user_id,
-          'school_id' => $this->school_id,
+          'school_id' => $this->user->school->id,
           'note_id' => $this->note_id,
           'user_name' => $this->user->name,
-          'note' => $this->note->note,
+          'note' => !!$this->note_id ? $this->note->note : null,
           'insert_date' => $this->insert_date,
           'start' => $this->start,
           'end' => $this->end,

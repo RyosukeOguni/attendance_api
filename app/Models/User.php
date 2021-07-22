@@ -14,11 +14,11 @@ class User extends Model
   // 主テーブルの設定
   public function school()
   {
-    return $this->belongsTo('App\Model\School');
+    return $this->belongsTo('App\Models\School');
   }
   // 従テーブルの設定
   public function attendance()
   {
-    return $this->hasMany('App\Model\Attendance');
+    return $this->hasMany('App\Models\Attendance');
   }
 }

@@ -12,6 +12,6 @@ class Note extends Model
   // 従テーブルの設定
   public function attendance()
   {
-    return $this->hasMany('App\Model\Attendance');
+    return $this->hasMany('App\Models\Attendance');
   }
 }

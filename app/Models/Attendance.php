@@ -14,10 +14,10 @@ class Attendance extends Model
   //主テーブルの設定
   public function user()
   {
-    return $this->belongsTo('App\Model\User');
+    return $this->belongsTo('App\Models\User')->with('school');
   }
   public function note()
   {
-    return $this->belongsTo('App\Model\Note');
+    return $this->belongsTo('App\Models\Note');
   }
 }

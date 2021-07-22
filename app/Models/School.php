@@ -12,6 +12,6 @@ class School extends Model
   // 従テーブルの設定
   public function user()
   {
-    return $this->hasMany('App\Models\User');
+    return $this->hasMany('App\Models\User')->with('attendance');
   }
 }
