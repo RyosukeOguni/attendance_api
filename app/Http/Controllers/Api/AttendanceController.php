@@ -15,9 +15,30 @@ class AttendanceController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $Attendances = Attendance::all();
+    if ($request->school_id && $request->date) {
+      $school_id = $request->school_id;
+      $date = $request->date;
+      $Attendances = Attendance::where('insert_date', $date)
+        // リレーション先のuserが持つschool_idでwhereをかける
+        ->whereHas('user', function ($query) use ($school_id) {
+          $query->where('school_id', $school_id);
+        })
+        // リレーションのクエリを一括読込して重複させない
+        ->with(['user', 'note'])
+        ->get();
+    } else if ($request->user_id && $request->year_month) {
+      $user_id = $request->user_id;
+      $year_month = $request->year_month;
+      $Attendances = Attendance::where('user_id', $user_id)
+        // 年-月-日のデータから、年-月%（オールマイティ）で絞り込み
+        ->where('insert_date', 'like', "$year_month%")
+        ->with(['user', 'note'])
+        ->get();
+    } else {
+      $Attendances = Attendance::with(['user', 'note'])->get();
+    }
     return new AttendanceCollection($Attendances);
   }
 

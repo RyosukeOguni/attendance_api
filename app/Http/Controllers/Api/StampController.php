@@ -20,7 +20,7 @@ class StampController extends Controller
   {
     // get()->all()で、コレクションをオブジェクトの配列として取得
     // ※get()->toArray()では全て配列化
-    $users = User::where('school_id', $request->school)->get()->all();
+    $users = User::where('school_id', $request->school_id)->get()->all();
     $attendances = Attendance::where('insert_date', Carbon::now()->format('Y-m-d'))->get()->all();
 
     // 指定所属校の利用者分の配列を生成
