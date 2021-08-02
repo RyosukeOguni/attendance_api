@@ -16,6 +16,10 @@ class Attendance extends Model
   {
     return $this->belongsTo('App\Models\User')->with('school');
   }
+  public function school()
+  {
+    return $this->belongsTo('App\Models\School');
+  }
   public function note()
   {
     return $this->belongsTo('App\Models\Note');

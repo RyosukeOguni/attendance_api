@@ -37,7 +37,9 @@ class AttendanceController extends Controller
         ->with(['user', 'note'])
         ->get();
     } else {
-      $Attendances = Attendance::with(['user', 'note'])->get();
+      $Attendances = Attendance::whereHas('user', function ($query) {
+        $query;
+      })->with(['user', 'note'])->get();
     }
     return new AttendanceCollection($Attendances);
   }

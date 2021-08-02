@@ -14,4 +14,8 @@ class School extends Model
   {
     return $this->hasMany('App\Models\User')->with('attendance');
   }
+  // public function attendance()
+  // {
+  //   return $this->hasMany('App\Models\Attendance');
+  // }
 }
