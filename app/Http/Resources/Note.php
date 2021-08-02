@@ -16,7 +16,7 @@ class Note extends JsonResource
   {
     return [
       'data' => [
-        'type' => $this->getTable(),
+        'type' => 'notes',
         'attribute' => [
           'id' => $this->id,
           'note' => $this->note,

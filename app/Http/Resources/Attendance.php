@@ -16,7 +16,7 @@ class Attendance extends JsonResource
   {
     return [
       'data' => [
-        'type' => $this->getTable(),
+        'type' => 'attendances',
         'attribute' => [
           'id' => $this->id,
           'user_id' => $this->user_id,

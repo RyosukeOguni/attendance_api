@@ -16,7 +16,7 @@ class School extends JsonResource
   {
     return [
       'data' => [
-        'type' => $this->getTable(),
+        'type' => 'schools',
         'attribute' => [
           'id' => $this->id,
           'school_name' => $this->school_name,

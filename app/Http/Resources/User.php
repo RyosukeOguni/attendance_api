@@ -16,12 +16,12 @@ class User extends JsonResource
   {
     return [
       'data' => [
-        'type' => $this->getTable(),
+        'type' => 'users',
         'attribute' => [
           'id' => $this->id,
           'name' => $this->name,
           'name_kana' => $this->name_kana,
-          'school_is' => $this->school_is,
+          'school_id' => $this->school_id,
           'school_name' => $this->school->school_name,
           'created_at' => $this->created_at,
           'updated_at' => $this->updated_at,
