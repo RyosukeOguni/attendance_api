@@ -80,7 +80,7 @@ class StampController extends Controller
     try {
       $attendance = Attendance::findOrFail($id);
     } catch (\Throwable $e) {
-      return response('Not found.', 404);
+      return response()->json(['message' => 'Not found'], 404);
     }
     $attendance->update($request->all());
     return response()->json($this->Stamp($attendance));

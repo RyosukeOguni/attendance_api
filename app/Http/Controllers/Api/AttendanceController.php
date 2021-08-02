@@ -67,7 +67,7 @@ class AttendanceController extends Controller
     try {
       $attendance = Attendance::findOrFail($id);
     } catch (\Throwable $e) {
-      return response('Not found.', 404);
+      return response()->json(['message' => 'Not found'], 404);
     }
     return new AttendanceResource($attendance);
   }
@@ -84,7 +84,7 @@ class AttendanceController extends Controller
     try {
       $attendance = Attendance::findOrFail($id);
     } catch (\Throwable $e) {
-      return response('Not found.', 404);
+      return response()->json(['message' => 'Not found'], 404);
     }
     $attendance->update($request->all());
     return new AttendanceResource($attendance);
@@ -101,9 +101,9 @@ class AttendanceController extends Controller
     try {
       $attendance = Attendance::findOrFail($id);
     } catch (\Throwable $e) {
-      return response('Not found.', 404);
+      return response()->json(['message' => 'Not found'], 404);
     }
     $attendance->delete();
-    return response('Deleted successfully.', 200);
+    return response()->json(['message' => 'Deleted successfully'], 200);
   }
 }
