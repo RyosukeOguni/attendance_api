@@ -77,7 +77,11 @@ class StampController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $attendance = Attendance::findOrFail($id);
+    try {
+      $attendance = Attendance::findOrFail($id);
+    } catch (\Throwable $e) {
+      return response('Not found.', 404);
+    }
     $attendance->update($request->all());
     return response()->json($this->Stamp($attendance));
   }

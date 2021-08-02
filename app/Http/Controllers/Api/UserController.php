@@ -41,7 +41,11 @@ class UserController extends Controller
    */
   public function show($id)
   {
-    $user = User::findOrFail($id);
+    try {
+      $user = User::findOrFail($id);
+    } catch (\Throwable $e) {
+      return response('Not found.', 404);
+    }
     return new UserResource($user);
   }
 
@@ -54,7 +58,11 @@ class UserController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $user = User::findOrFail($id);
+    try {
+      $user = User::findOrFail($id);
+    } catch (\Throwable $e) {
+      return response('Not found.', 404);
+    }
     $user->update($request->all());
     return new UserResource($user);
   }
@@ -67,7 +75,12 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    User::findOrFail($id)->delete();
+    try {
+      $user = User::findOrFail($id);
+    } catch (\Throwable $e) {
+      return response('Not found.', 404);
+    }
+    $user->delete();
     return response('Deleted successfully.', 200);
   }
 }
