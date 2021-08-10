@@ -23,7 +23,7 @@ class AttendanceFactory extends Factory
   {
     return [
       'note_id' => $this->faker->numberBetween(1, 4),
-      'start' => $this->time15Cile($this->faker->dateTimeBetween('09:00', '12:00'))->format('H:i'),
+      'start' => $this->time15Cile($this->faker->dateTimeBetween('10:00', '13:00'))->format('H:i'),
       'end' => $this->time15Cile($this->faker->dateTimeBetween('13:00', '16:00'))->format('H:i'),
       'food_fg' => $this->faker->boolean(50),
       'outside_fg' => $this->faker->boolean(50),
