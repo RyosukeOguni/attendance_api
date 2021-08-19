@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\StampController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AttendanceController;
+use App\Http\Controllers\Api\OutputController;
 use App\Http\Controllers\Api\SchoolController;
 use App\Http\Controllers\Api\NoteController;
 
@@ -51,5 +52,6 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::put('/attendances/{id}', [AttendanceController::class, 'update']);
   Route::delete('/attendances/{id}', [AttendanceController::class, 'destroy']);
   // 出欠記録出力
-  Route::post('/outputs', [AttendanceController::class, 'output']);
+  Route::post('/outputs/individual', [OutputController::class, 'individual']);
+  Route::post('/outputs/bulk', [OutputController::class, 'bulk']);
 });
