@@ -101,12 +101,12 @@ class OutputController extends Controller
       // 対象のファイルパスを指定
       public_path() . '/excel/temporary/output.xlsx',
       // ファイル名を変更
-      $year_month . '_' . $user->id . '_' . $user->name . '.xlsx',
+      'output.xlsx',
       // Httpヘッダーに配列を追加
       ['content-type' => 'application/vnd.ms-excel',]
-    );
+    )
       // ダウンロード操作後にファイルを削除する
-      // ->deleteFileAfterSend(true);
+      ->deleteFileAfterSend(true);
   }
 
 
@@ -207,7 +207,7 @@ class OutputController extends Controller
       // 対象のファイルパスを指定
       public_path() . '/excel/export/output.zip',
       // ファイル名を変更
-      $year_month . '_' . $user->school->school_name . '.zip',
+      'output.zip',
       // Httpヘッダーに配列を追加
       ['content-type' => 'application/zip',]
     )
