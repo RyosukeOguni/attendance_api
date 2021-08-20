@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
     ],
 
     'api' => [
+      'throttle:120,1',
       //apiのミドルウエアにsanctumの認証機能を適用
       EnsureFrontendRequestsAreStateful::class,
       'throttle:api',
