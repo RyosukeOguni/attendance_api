@@ -20,8 +20,8 @@ class ExcelTable
     if (isset($record)) {
       $this->id = $record['id'];
       $this->service = true;
-      $this->start = $record['start'];
-      $this->end = $record['end'];
+      $this->start = substr($record['start'], 0, 5);
+      $this->end = substr($record['end'], 0, 5);
       $this->food_fg = $this->setFood_fg($record['food_fg']);
       $this->outside_fg = $this->setOutside_fg($record['outside_fg']);
       $this->medical_fg = $this->setMedical_fg($record['medical_fg']);
